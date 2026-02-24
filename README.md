@@ -1,2 +1,1 @@
-# Yurakin.github.io
-chernobyl nhd project 
+# chernobyl nhd project 
