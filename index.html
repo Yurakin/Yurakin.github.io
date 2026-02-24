@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chernobyl Disaster: Reaction & Reform</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body { font-family: Arial, sans-serif; margin:0; display:flex; scroll-behavior: smooth; background-color:#000; color:#fff;}
+.sidebar {position:sticky; top:0; height:100vh; background-color:#8B0000; padding:20px; min-width:220px;}
+.sidebar a {display:block; color:white; text-decoration:none; padding:10px 0; font-weight:bold; transition:0.3s;}
+.sidebar a:hover {color:#ff4d4d;}
+.sidebar h2 {color:white; margin-bottom:20px;}
+.main {flex:1; padding:20px;}
+.section {background:#111; margin:20px 0; padding:25px; border-radius:12px; box-shadow:0 0 15px #8B0000; opacity:0; transform:translateY(20px); transition:0.8s;}
+.section.visible {opacity:1; transform:translateY(0);}
+h1,h2,h3 {color:#ff4d4d;}
+img,iframe,canvas {width:100%; margin:15px 0; border-radius:8px; transition: transform 0.3s;}
+img:hover, iframe:hover, canvas:hover {transform:scale(1.03);}
+ul {margin:10px 0 10px 20px;}
+footer {font-size:0.8em; text-align:center; margin:30px 0; color:#aaa;}
+#backToTop {position:fixed; bottom:25px; right:25px; background-color:#ff4d4d; color:#000; border:none; border-radius:50%; padding:15px; font-size:18px; cursor:pointer; display:none; z-index:100;}
+#backToTop:hover {background-color:#8B0000; transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<h2>Chernobyl NHD</h2>
+<a href="#intro"><i class="fas fa-home"></i> Home</a>
+<a href="#revolution"><i class="fas fa-bolt"></i> Revolution</a>
+<a href="#reaction"><i class="fas fa-exclamation-triangle"></i> Reaction</a>
+<a href="#reform"><i class="fas fa-shield-alt"></i> Reform</a>
+<a href="#sources"><i class="fas fa-book"></i> Sources</a>
+</div>
+
+<div class="main">
+
+<!-- INTRO -->
+<div class="section" id="intro">
+<h1><i class="fas fa-radiation"></i> Chernobyl Disaster</h1>
+<p><strong>Thesis:</strong> Chernobyl caused many safety concerns around the world but now with extreme safety advances like making them cleaner, more efficient and safe this should make more power more widely available and people should ultimately feel more safe.</p>
+<p>The disaster at Chernobyl was not just a local accident. It shook global understanding of nuclear energy, influencing reactor design, legislation, and international safety culture for decades. This website explores the nuclear revolution, the immediate reaction, and the long-term reforms that followed.</p>
+</div>
+
+<!-- REVOLUTION -->
+<div class="section" id="revolution">
+<h2><i class="fas fa-bolt"></i> Revolution</h2>
+<p>The explosion on April 26, 1986, in Reactor 4 at the Chernobyl Nuclear Power Plant was catastrophic. The RBMK reactor’s flawed design, combined with human error during a safety test, led to uncontrolled overheating and a massive release of radioactive material (“Chernobyl Explosion”).</p>
+<img src="images/chernobyl_shelter.png" alt="Chernobyl Shelter">
+<p>This shelter image shows the original sarcophagus and the later New Safe Confinement. It represents the first revolution in nuclear safety: constructing a massive containment to limit radiation spread. The disaster itself became a turning point, forcing nations to reconsider the risks of nuclear energy and highlighting weaknesses in political transparency (“Chernobyl Shelter”).</p>
+<p>During the 1970s and 1980s, nuclear power was rapidly expanding worldwide. The Chernobyl explosion halted this expansion temporarily, showing that revolutionary technology also carried unprecedented risks (“Plans For New Reactors Worldwide”).</p>
+<img src="images/contaminated_alps.png" alt="Alps Contaminated by Radiation">
+<p>The Alps image shows radiation contamination that reached Europe. It illustrates how nuclear accidents have consequences beyond borders and led to the realization that international monitoring was essential (“Alps Still Contaminated by Radiation from Chernobyl”).</p>
+</div>
+
+<!-- REACTION -->
+<div class="section" id="reaction">
+<h2><i class="fas fa-exclamation-triangle"></i> Reaction</h2>
+<p>The Soviet government initially tried to cover up the disaster. Radiation alarms were triggered in Sweden before any official disclosure, exposing the limits of secrecy and the dangers of misinformation (“Chernobyl Explosion”).</p>
+<p>Worldwide, governments responded immediately:</p>
+<ul>
+<li>Emergency protocols were reviewed in the U.S., influenced by lessons from Three Mile Island (“Report on the Accident at the Chernobyl Nuclear Power Station”).</li>
+<li>Environmental movements in Eastern Europe gained momentum, demanding accountability and ecological awareness (“Chernobyl Disaster Spurs Ecological Movements in Eastern Europe”).</li>
+<li>International organizations like the IAEA strengthened guidelines for reporting and monitoring radiation (“Frequently asked questions about Chernobyl”).</li>
+</ul>
+<img src="images/evacuations_pripyat.png" alt="Evacuations in Pripyat">
+<p>This image of Pripyat’s evacuation demonstrates the immediate human impact. Tens of thousands were displaced overnight, reflecting the reaction phase of nuclear disasters and how society mobilizes in crisis.</p>
+</div>
+
+<!-- REFORM -->
+<div class="section" id="reform">
+<h2><i class="fas fa-shield-alt"></i> Reform</h2>
+<p>The long-term reforms after Chernobyl transformed nuclear safety worldwide. RBMK reactors were modified to prevent overheating, and the IAEA pushed for stronger international standards (“RBMK Reactors – Appendix”).</p>
+<p>Modern designs in China and France now include passive cooling systems, double containment, and automatic shutdowns to prevent accidents (“Plans For New Reactors Worldwide”).</p>
+<img src="images/china_france_reactors.png" alt="Modern Chinese and French Reactor Designs">
+<p>This image compares modern Hualong One and European Pressurized Reactors, demonstrating how technology evolved after disasters to prioritize safety and efficiency.</p>
+<p>Following Fukushima, Japan, additional reforms included backup cooling, stronger flood defenses, and stricter emergency training. These reforms exemplify how nuclear energy has reacted to crises and continuously improved (“How Chernobyl Jump-Started the Global Nuclear Safety Regime”).</p>
+<p>Charts now track nuclear energy usage over time. They show the initial rapid growth, a slowdown after Chernobyl, and a resurgence as reactors became safer and more efficient. Visualizing this change helps connect the disaster to policy, technology, and energy planning.</p>
+<canvas id="nuclearChart"></canvas>
+<script>
+const ctx = document.getElementById('nuclearChart').getContext('2d');
+new Chart(ctx, {
+ type: 'line',
+ data: {
+   labels: ['1970','1980','1990','2000','2010','2020'],
+   datasets: [{
+     label: 'Global Nuclear Electricity (%)',
+     data: [2,8,17,16,13,10],
+     borderColor: 'rgb(255,77,77)',
+     backgroundColor: 'rgba(255,77,77,0.2)',
+     tension: 0.1,
+     fill: false
+   }]
+ }
+});
+</script>
+</div>
+
+<!-- SOURCES -->
+<div class="section" id="sources">
+<h2><i class="fas fa-book"></i> Sources</h2>
+<ul>
+<li>"Alps Still Contaminated by Radiation from Chernobyl." Medicine, Health, and Bioethics: Essential Primary Sources, edited by K. Lee Lerner and Brenda Wilmoth Lerner, Gale, 2006, pp. 343-46. Gale in Context: World History, link.gale.com/apps/doc/CX3456500131/WHIC?u=lms_bld&sid=bookmark-WHIC&xid=bfd050f2. Accessed 9 Jan. 2026.</li>
+<li>Chernobyl Disaster Spurs Ecological Movements in Eastern Europe. 2006. Gale in Context: World History, link.gale.com/apps/doc/CX3456400178/WHIC?u=lms_bld&sid=bookmark-WHIC&xid=cf072a1f. Accessed 9 Jan. 2026.</li>
+<li>"Chernobyl Explosion." Gale World History Online Collection, Gale, 2023. Gale in Context: World History, link.gale.com/apps/doc/BHUEZV674671603/WHIC?u=lms_bld&sid=bookmark-WHIC&xid=c3772bcd. Accessed 16 Dec. 2025.</li>
+<li>"Chernobyl Shelter." Chernobyl Shelter, gao.gov, www.gao.gov/assets/gao_blog/inline/2_4.png. Accessed 4 Feb. 2026.</li>
+<li>"Frequently asked questions about Chernobyl." iaea.org, www.iaea.org/newscenter/focus/chernobyl/faqs. Accessed 13 Jan. 2026.</li>
+<li>"How Chernobyl Jump-Started the Global Nuclear Safety Regime." goa.gov, 12 Sept. 2019, www.gao.gov/blog/2019/09/12/how-chernobyl-jump-started-the-global-nuclear-safety-regime. Accessed 13 Jan. 2026.</li>
+<li>"RBMK Reactors – Appendix to Nuclear Power Reactors." world-nuclear.org, 7 Jan. 2026. Accessed 13 Jan. 2026.</li>
+<li>"Plans For New Reactors Worldwide." world-nuclear.org, 9 Jan. 2026. Accessed 13 Jan. 2026.</li>
+<li>"Report on the Accident at the Chernobyl Nuclear Power Station." nrc.gov, Jan. 1987. Accessed 29 Jan. 2026.</li>
+<li>"Scientists can't agree about Chernobyl's impact on wildlife." KnowableMagazine, 7 Feb. 2022. Accessed 13 Jan. 2026.</li>
+</ul>
+</div>
+
+<footer>
+<p>&copy; 2026 Chernobyl NHD Website</p>
+</footer>
+
+<button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+sections.forEach(sec => { if(window.scrollY + window.innerHeight > sec.offsetTop + 100){ sec.classList.add('visible'); }});
+document.getElementById('backToTop').style.display = (window.scrollY > 300) ? 'block' : 'none';
+});
+document.getElementById('backToTop').addEventListener('click', () => { window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
