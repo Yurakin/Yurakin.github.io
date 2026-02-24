@@ -6,139 +6,186 @@
 
 <style>
 body {
-    background-color: #000;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    scroll-behavior: smooth;
 }
+
 header {
-    background-color: #111;
-    padding: 30px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(black, #1a0000);
     text-align: center;
-    border-bottom: 4px solid #cc0000;
 }
-h1, h2 {
+
+h1 {
+    color: #cc0000;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
     color: #cc0000;
 }
+
 .section {
-    padding: 40px;
-    border-bottom: 1px solid #333;
+    padding: 80px 15%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
 }
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 img {
     width: 100%;
-    max-width: 800px;
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
+    margin: 25px 0;
+    border-radius: 10px;
 }
+
 .caption {
-    font-size: 0.8em;
+    font-size: 0.85em;
+    color: #aaa;
     text-align: center;
-    color: #cccccc;
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: black;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #cc0000;
+}
+
+nav a {
+    color: #cc0000;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 footer {
-    padding: 30px;
+    padding: 40px 15%;
     background-color: #111;
 }
 </style>
+
+<script>
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        const position = section.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        if(position < screenPosition){
+            section.classList.add('visible');
+        }
+    });
+});
+</script>
 </head>
 
 <body>
 
+<nav>
+<a href="#background">Before</a>
+<a href="#revolution">Revolution</a>
+<a href="#reaction">Reaction</a>
+<a href="#reform">Reform</a>
+<a href="#impact">Impact</a>
+</nav>
+
 <header>
-<h1>Chernobyl: Revolution, Reaction, Reform</h1>
-<p><strong>Thesis:</strong> Chernobyl caused many safety concerns around the world, but now extreme safety advances have made nuclear energy cleaner, more efficient, and safer. These improvements allow power to be more widely available and help people ultimately feel more secure about nuclear energy.</p>
+<h1>Chernobyl</h1>
+<p>Revolution • Reaction • Reform</p>
+<p><strong>Thesis:</strong> Chernobyl caused many safety concerns around the world, but now extreme safety advances have made nuclear energy cleaner, more efficient and safe. These improvements allow power to be more widely available and help people ultimately feel more secure about nuclear energy.</p>
 </header>
 
-<div class="section">
-<h2>Before 1986: Confidence in Nuclear Power</h2>
+<section class="section" id="background">
+<h2>Before the Disaster</h2>
 <p>
-Before 1986, nuclear power was expanding rapidly across the world. Many countries believed nuclear energy was the future because it produced large amounts of electricity without burning fossil fuels. The Soviet Union operated RBMK reactors, which were powerful but had design weaknesses. International safety cooperation was limited, and countries mostly regulated themselves. Although accidents such as Three Mile Island in the United States had raised concerns, many governments still believed nuclear power was manageable. This confidence would be permanently changed in April 1986.
+Before 1986, nuclear power was expanding rapidly across Europe, Asia, and North America. Governments viewed nuclear energy as a modern solution to growing electricity demands. The Soviet Union operated RBMK reactors, which were powerful and efficient but had serious design weaknesses. International cooperation on nuclear safety existed, but it was limited. Countries mostly regulated themselves. Although earlier accidents like Three Mile Island raised concerns, many leaders believed nuclear technology was fundamentally safe if managed correctly. This confidence shaped global policy—until April 26, 1986.
 </p>
-</div>
+</section>
 
-<div class="section">
-<h2>Revolution: The Explosion at Reactor 4</h2>
-
-<img src="images/reactor4_iaea.png" alt="Reactor 4 Damage">
-<p class="caption">Reactor 4 after the 1986 explosion. Source: International Atomic Energy Agency (IAEA).</p>
-
-<p>
-On April 26, 1986, Reactor 4 at the Chernobyl Nuclear Power Plant exploded during a safety test. According to the U.S. Nuclear Regulatory Commission’s 1987 report, the disaster resulted from “a flawed reactor design coupled with operator error.” The RBMK reactor lacked a full containment structure, allowing radioactive material to escape into the atmosphere. The explosion released radiation across Ukraine, Belarus, and parts of Europe. This moment represents a revolution in nuclear history because it forced the world to confront the dangers of unsafe reactor design and poor oversight.
-</p>
-
-<img src="images/rbmk_diagram.png" alt="RBMK Diagram">
-<p class="caption">RBMK reactor design used at Chernobyl. Source: World Nuclear Association.</p>
-
-<p>
-This RBMK diagram shows the structure that contributed to instability at low power levels. The design included graphite control rods that increased reactivity before reducing it, which made emergency shutdown more dangerous. After the explosion, engineers modified RBMK reactors to correct these flaws. The disaster exposed weaknesses not only in technology but also in government transparency, beginning global change.
-</p>
-</div>
-
-<div class="section">
-<h2>Reaction: Political, Social, and Economic Impact</h2>
+<section class="section" id="revolution">
+<h2>Revolution: The Explosion</h2>
 
 <img src="images/old_shelter.png" alt="Original Shelter">
-<p class="caption">Original concrete sarcophagus built in 1986. Source: U.S. Government Accountability Office (GAO).</p>
+<p class="caption">Original concrete sarcophagus built over Reactor 4. Source: U.S. Government Accountability Office (GAO).</p>
 
 <p>
-Immediately after the explosion, Soviet authorities built a massive concrete structure known as the sarcophagus to contain radiation. This urgent response showed the seriousness of the situation, but it was only a temporary solution. Politically, the Soviet government delayed informing the public, damaging trust. When radiation alarms sounded in Sweden, the international community learned about the accident. This weakened the credibility of Soviet leadership and contributed to political reforms during the late 1980s.
+On April 26, 1986, Reactor 4 at the Chernobyl Nuclear Power Plant exploded during a late-night safety test. According to the U.S. Nuclear Regulatory Commission’s 1987 report, the accident resulted from a flawed reactor design combined with operator error. The RBMK reactor lacked a full containment structure, allowing radioactive material to escape into the atmosphere. The explosion released radiation across Ukraine, Belarus, and parts of Europe.
 </p>
 
 <p>
-Socially, over 100,000 people were evacuated from nearby areas such as Pripyat. Environmental movements grew stronger across Eastern Europe. Economically, cleanup and containment cost billions of dollars. The disaster affected agriculture, energy production, and government budgets. Internationally, the accident led to new agreements requiring countries to report nuclear accidents quickly and cooperate on safety standards. The International Atomic Energy Agency expanded its safety conventions, increasing global oversight.
+The image above shows the emergency concrete structure built to contain the destroyed reactor. This moment represents a revolution in nuclear history. It forced governments to admit that nuclear energy carried greater risks than previously acknowledged. The disaster shattered public confidence and permanently changed how nuclear power would be regulated.
 </p>
-</div>
+</section>
 
-<div class="section">
-<h2>Reform: Safer Technology and Global Cooperation</h2>
+<section class="section" id="reaction">
+<h2>Reaction: Political, Social, and Economic Change</h2>
 
-<img src="images/new_safe_confinement.png" alt="New Safe Confinement">
+<p>
+The immediate reaction was secrecy. Soviet officials delayed public announcements, which damaged trust when radiation was detected in other countries. International pressure exposed the cover-up, weakening confidence in Soviet leadership. Many historians argue that Chernobyl contributed to political reforms and greater openness in the late Soviet period.
+</p>
+
+<p>
+Socially, over 100,000 residents were evacuated from nearby cities such as Pripyat. Communities were permanently displaced. Environmental activism grew stronger across Eastern Europe. Citizens demanded transparency and accountability from their governments. Chernobyl became a symbol of government failure and environmental risk.
+</p>
+
+<p>
+Economically, the cleanup cost billions of dollars. Large areas of farmland were contaminated, reducing agricultural production. Energy policies shifted as some countries slowed or paused nuclear expansion. Internationally, the International Atomic Energy Agency strengthened safety conventions and reporting requirements. Nations agreed to share information quickly in the event of future accidents.
+</p>
+</section>
+
+<section class="section" id="reform">
+<h2>Reform: Safer Designs and Global Standards</h2>
+
+<img src="images/proposed_new_shelter.png" alt="New Safe Confinement">
 <p class="caption">Design of the New Safe Confinement structure. Source: U.S. Government Accountability Office (GAO).</p>
 
 <p>
-Decades later, the New Safe Confinement was built over Reactor 4. Unlike the original sarcophagus, this structure was engineered for long-term stability and safety. It was designed through international cooperation and funded by multiple nations. This reform shows how the world responded with improved engineering and accountability.
+The New Safe Confinement structure represents long-term reform. Unlike the original sarcophagus, this engineering project was designed for durability and long-term containment. Built with international funding and cooperation, it demonstrates how nations responded with improved planning and oversight.
 </p>
 
 <p>
-Modern nuclear reactors now include passive safety systems that automatically cool reactors without human intervention. Countries such as France developed European Pressurized Reactors with reinforced containment buildings. China designed the Hualong One reactor with multiple safety layers and automatic shutdown features. These technological improvements reflect lessons learned from Chernobyl. International laws and inspection standards are now stricter, and transparency has increased.
+After Chernobyl, reactor designs around the world changed significantly. Safety systems became more advanced, including automatic shutdown mechanisms and passive cooling systems that function without human intervention. Countries such as France and China developed newer reactor models with reinforced containment structures and multiple backup systems. These reforms reflect lessons learned from 1986.
 </p>
-</div>
 
-<div class="section">
+<p>
+International law also evolved. Conventions now require countries to report accidents promptly and allow inspections. Transparency increased, and safety standards became more uniform worldwide. The disaster directly influenced technological innovation and global policy reform.
+</p>
+</section>
+
+<section class="section" id="impact">
 <h2>Impact Today</h2>
 <p>
-Chernobyl transformed global nuclear policy. It demonstrated the consequences of weak oversight and flawed design. However, it also led to major reforms in technology, regulation, and international cooperation. Today’s reactors are safer because of stronger containment systems, automatic shutdown procedures, and global reporting requirements. The disaster remains a warning, but it also shows how crisis can produce reform and improvement.
+Chernobyl remains one of the most significant nuclear disasters in history. It exposed weaknesses in reactor design, emergency planning, and political transparency. However, it also triggered reform. Modern nuclear plants operate under stricter regulations and improved technology. The disaster demonstrates how crisis can lead to revolutionary change, strong reaction, and meaningful reform.
 </p>
-</div>
+
+<p>
+Today, nuclear energy continues to provide electricity to millions of people. While concerns remain, advancements in safety, efficiency, and international cooperation reflect the lasting impact of Chernobyl. The event reshaped global energy policy and proved that major historical disasters can lead to technological and political improvement.
+</p>
+</section>
 
 <footer>
-<h2>Annotated Works Cited</h2>
-
-<p><strong>Primary Sources:</strong></p>
+<h2>Works Cited</h2>
 <p>
-Report on the Accident at the Chernobyl Nuclear Power Station. U.S. Nuclear Regulatory Commission, 1987.  
-This government report explains the technical causes of the explosion and provides direct evidence about reactor flaws and operator error.
-</p>
-
-<p>
+Report on the Accident at the Chernobyl Nuclear Power Station. U.S. Nuclear Regulatory Commission, Jan. 1987.  
 Chernobyl Shelter. U.S. Government Accountability Office.  
-This source provides images and explanations of both the original sarcophagus and the New Safe Confinement structure.
-</p>
-
-<p><strong>Secondary Sources:</strong></p>
-<p>
-“RBMK Reactors – Appendix.” World Nuclear Association.  
-This source explains RBMK reactor design and the safety changes made after 1986.
-</p>
-
-<p>
 “Frequently Asked Questions about Chernobyl.” International Atomic Energy Agency.  
-This source describes the international response and modern nuclear safety standards.
+“RBMK Reactors – Appendix to Nuclear Power Reactors.” World Nuclear Association.  
 </p>
-
 </footer>
 
 </body>
